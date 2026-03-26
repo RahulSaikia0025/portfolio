@@ -3,123 +3,232 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rahul Saikia | Portfolio</title>
+  <title>Rahul Saikia | Python Developer</title>
+
   <style>
-    body {
+    :root {
+      --primary: #2563eb;
+      --secondary: #1e40af;
+      --bg: #f9fafb;
+      --text: #111827;
+      --card: #ffffff;
+      --border: #e5e7eb;
+    }
+
+    body.dark {
+      --bg: #0f172a;
+      --text: #f1f5f9;
+      --card: #1e293b;
+      --border: #334155;
+    }
+
+    * {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #ffffff;
-      color: #000000;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      transition: 0.3s ease;
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: auto;
-      padding: 20px;
+      padding: 40px 20px;
     }
 
-    h1 {
-      color: #2563eb;
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
     }
 
-    h2 {
-      color: #2563eb;
-      margin-top: 30px;
+    header h1 {
+      font-size: 2.5rem;
+      color: var(--primary);
+    }
+
+    .toggle {
+      cursor: pointer;
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--card);
+    }
+
+    .section {
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+
+    .section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section h2 {
+      margin-bottom: 15px;
+      color: var(--primary);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 5px;
     }
 
     .card {
-      background: #eff6ff;
-      border: 1px solid #dbeafe;
-      padding: 15px;
-      margin-top: 15px;
-      border-radius: 10px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
     }
 
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
+      gap: 20px;
+    }
+
+    .skills span {
+      display: inline-block;
+      background: #e0ecff;
+      padding: 6px 10px;
+      margin: 5px;
+      border-radius: 6px;
+      font-size: 0.9rem;
     }
 
     .btn {
       display: inline-block;
-      background: #2563eb;
-      color: white;
-      padding: 8px 12px;
-      text-decoration: none;
-      border-radius: 5px;
       margin-top: 10px;
+      padding: 8px 14px;
+      background: var(--primary);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      transition: 0.3s;
     }
 
     .btn:hover {
-      background: #1d4ed8;
+      background: var(--secondary);
     }
 
-    .skills {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 5px;
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 0.9rem;
+      color: #6b7280;
     }
   </style>
 </head>
 <body>
+
   <div class="container">
-    <h1>Rahul Saikia</h1>
-    <p>Python Developer specializing in AI, Computer Vision & Automation</p>
 
-    <div class="card">
-      <h2>About Me</h2>
-      <p>
-        I build intelligent systems using Python, focusing on automation,
-        AI, and real-world problem solving. I enjoy creating efficient,
-        scalable, and impactful solutions.
-      </p>
-    </div>
+    <header>
+      <div>
+        <h1>Rahul Saikia</h1>
+        <p style="margin-top:8px; max-width:600px; color:#4b5563;">
+          Portfolio of a Python developer focused on AI, automation, and scalable backend systems. Showcasing real-world projects, clean engineering practices, and solutions built for performance and impact.
+        </p>
+      </div>
+      <button class="toggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+    </header>
 
-    <div class="card">
-      <h2>Skills</h2>
-      <div class="skills">
+    <section class="section">
+      <h2>Professional Summary</h2>
+      <div class="card">
+        <p>
+          Detail-oriented Python developer with experience in building AI-driven
+          applications, automation systems, and scalable backend solutions.
+        </p>
+        <a class="btn" href="resume.pdf" download>Download Resume</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Technical Skills</h2>
+      <div class="card skills">
         <span>Python</span>
         <span>Machine Learning</span>
         <span>OpenCV</span>
-        <span>Flask / FastAPI</span>
+        <span>FastAPI / Flask</span>
         <span>Data Analysis</span>
         <span>Automation</span>
         <span>Git & GitHub</span>
         <span>Linux</span>
       </div>
-    </div>
+    </section>
 
-    <h2>GitHub Projects</h2>
-    <div id="projects" class="grid"></div>
+    <section class="section">
+      <h2>Projects</h2>
+      <div id="projects" class="grid"></div>
+    </section>
 
-    <div class="card">
+    <section class="section">
       <h2>Contact</h2>
-      <p>Email: rahulsaikia458@gmail.com</p>
-      <p>Phone: 8453314614</p>
-      <a class="btn" href="https://www.linkedin.com/in/rahul-saikia-0a51092a4" target="_blank">LinkedIn</a>
-      <a class="btn" href="https://github.com/RahulSaikia0025" target="_blank">GitHub</a>
-    </div>
+      <div class="card">
+        <p><strong>Email:</strong> rahulsaikia458@gmail.com</p>
+        <p><strong>Phone:</strong> 8453314614</p>
+        <a class="btn" href="https://www.linkedin.com/in/rahul-saikia-0a51092a4" target="_blank">LinkedIn</a>
+        <a class="btn" href="https://github.com/RahulSaikia0025" target="_blank">GitHub</a>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Rahul Saikia</p>
+    </footer>
+
   </div>
 
   <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
+    }
+
+    // Scroll animation
+    const sections = document.querySelectorAll(".section");
+    window.addEventListener("scroll", () => {
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+          sec.classList.add("show");
+        }
+      });
+    });
+
+    // Fetch projects + add demo button
     fetch("https://api.github.com/users/RahulSaikia0025/repos")
       .then(res => res.json())
       .then(data => {
         const container = document.getElementById("projects");
-        data.slice(0, 4).forEach(repo => {
+
+        data.slice(0, 6).forEach(repo => {
           const div = document.createElement("div");
           div.className = "card";
 
           div.innerHTML = `
             <h3>${repo.name}</h3>
-            <p>${repo.description || "No description available"}</p>
-            <a class="btn" href="${repo.html_url}" target="_blank">View Project</a>
+            <p>${repo.description || "No description provided"}</p>
+            <a class="btn" href="${repo.html_url}" target="_blank">GitHub</a>
+            ${repo.homepage ? `<a class="btn" href="${repo.homepage}" target="_blank">Live Demo</a>` : ""}
           `;
 
           container.appendChild(div);
         });
       });
   </script>
+
 </body>
 </html>
